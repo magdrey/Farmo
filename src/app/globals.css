@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.user-message {
+  display: flex;
+  background-color: #d9d9d9;
+  color: black;
+  height: fit-content;
+  justify-content: right;
+  width: fit-content;
+  max-width: 70%;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  position: relative;
+}
+
+.bot-message {
+  background-color: #518c36;
+  color: #e7f4e2;
+  height: fit-content;
+  display: flex;
+  width: fit-content;
+  max-width: 70%;
+  padding: 0.3rem 1rem 0.3rem 1rem;
+  position: relative;
+}
+
+/* General scrollbar styles */
+::-webkit-scrollbar {
+  width: 4px; /* Width of the vertical scrollbar */
+  height: 8px; /* Height of the horizontal scrollbar */
+}
+
+/* Scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+/* Scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Scrollbar handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.lightswitch {
+  width: 2rem;
+  height: 1rem;
+  border-radius: 10px;
+  display: flex;
+}
+
+.darkmode .lightswitch {
+  background-color: #888;
+  justify-content: end;
+}
+.lightmode .lightswitch {
+  background-color: #888;
+  justify-content: start;
+}
+.lightmode .bg {
+  background-color: #f8f8f8;
+  color: black;
+}
+.darkmode .bg {
+  background-color: #333333;
+  color: #f8f8f8;
+}
+.darkmode .bgs {
+  background-color: black;
+}
+.lightmode .prompt {
+  background-color: #e7f4e2;
+  color: black;
+}
+.darkmode .prompt {
+  background-color: #e7f4e2;
+  color: #333333;
+}
+
+.Lswitch {
+  background-color: aliceblue;
+  border-radius: 100%;
+  width: 1rem;
+  height: 1rem;
+}
+.upgrade {
+  background-color: #060e42;
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
