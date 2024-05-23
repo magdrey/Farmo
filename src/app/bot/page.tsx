@@ -10,14 +10,15 @@ interface Message {
 const Page = () => {
   // {text: "bitch ass nigga", fromUser: true}
   const [messages, setMessages] = useState<Message[]>([
-    { text: "bitch ass nigga", fromUser: true },
+    { text: "b", fromUser: true },
     { text: "wad  wad", fromUser: false },
     { text: "tf is you", fromUser: true },
-    { text: "bitch ass nigga", fromUser: false },
+    { text: "b a n", fromUser: false },
   ]);
   const [inputValue, setInputValue] = useState("");
   const [prompts, setPrompts] = useState<Message[][]>([]);
   const [darkmode, setDarkmode] = useState(false);
+  const [ham, setHam] = useState(false);
 
   const notfed = () => {
     setTimeout(() => {
@@ -57,26 +58,45 @@ const Page = () => {
   const switchmode = () => {
     setDarkmode(!darkmode);
   };
+  const clickham = () => {
+    setHam(!ham);
+  };
 
   return (
     <div
       className={
         darkmode
-          ? "w-full flex flex-row bg-black darkmode"
-          : "w-full flex flex-row lightmode"
+          ? "w-full smallH flex flex-col md:flex-row bg-black darkmode"
+          : "w-full smallH flex flex-col md:flex-row lightmode"
       }
     >
       <div
         className={
           darkmode
-            ? "chatsidebar w-[20%] bg-black h-[100vh]"
-            : "chatsidebar w-[20%] bg h-[100vh]"
+            ? "chatsidebar md:w-[20%] bg-black md:h-[100vh]"
+            : "chatsidebar md:w-[20%] bg md:h-[100vh]"
         }
       >
-        <div className="sidename h-[5%]"> Farmo </div>
-        <div className="body h-[95%] ">
+        <div className="sidename ml-4 mt-2 h-[5%]">
+          {" "}
+          <Link href={"/"}> Farmo </Link>{" "}
+        </div>
+        <div
+          onClick={clickham}
+          className={ham ? "hamburger hamburgeractive" : " hamburger "}
+        >
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </div>
+
+        <div
+          className={
+            ham ? "chatbar chatbaractive  h-[95%] " : "chatbar  h-[95%]"
+          }
+        >
           <div className=" ai flex bgs flex-col w-full h-[60%] ">
-            <div className="flex h-[15%] w-auto mx-auto">
+            <div className="flex h-[15%] w-auto mx-4 md:mx-auto">
               <p
                 className={
                   " bg-green-800 rounded-full w-[2rem] h-[2rem] my-auto"
@@ -126,15 +146,15 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="chat-cont w-[80%] h-[100vh] bg ">
+      <div className="chat-cont md:w-[80%] h-full md:h-[100vh] bg ">
         <div className="chatinner-cont  w-[90%] h-full  bg mx-auto ">
-          <div className="chat-head h-[15%]  flex border-b border-gray-300 py-8 ">
+          <div className="chat-head md:h-[15%]  flex border-b border-gray-300 py-8 ">
             <div className=" w-full h-[3rem] my-auto flex justify-between">
               <div className="flex my-auto">
                 <p className={" bg rounded-full w-[2rem] h-[2rem] my-auto"}></p>
                 <div className="flex flex-col ml-2 my-auto">
                   <p>Hello, User</p>
-                  <p className="text-sm">
+                  <p className="text-sm hidden md:flex">
                     Get personalized answers to your Agricultural questions
                   </p>
                 </div>
@@ -142,10 +162,10 @@ const Page = () => {
               <div className="flex my-auto gap-4">
                 <button
                   onClick={newprompt}
-                  className="px-[1rem] py-[0.5rem] rounded-lg shadow-lg"
+                  className="px-[1rem] py-[0.5rem] rounded-lg flex shadow-lg"
                 >
-                  {" "}
-                  generate new prompt
+                  {" + "}
+                  <p className=" ml-2 hidden md:flex">generate new prompt</p>
                 </button>
                 <div onClick={switchmode} className="lightswitch my-auto">
                   <div className="Lswitch"></div>
@@ -183,7 +203,7 @@ const Page = () => {
                 </div>
               ))}
             </div>
-            <div className="inputsection flex flex-col justify-center w-[55rem] mx-auto bottom-[1rem]  h-[20%]">
+            <div className="inputsection flex flex-col justify-center w-[90%] md:w-[55rem] mx-auto bottom-[1rem]  h-[20%]">
               <span className="inputbox w-full flex  mx-auto h-[3rem]">
                 <input
                   type="text"
